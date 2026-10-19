@@ -128,11 +128,20 @@
 #bjh .creds{margin-top:36px;display:grid;gap:0;border-top:1px solid var(--line-2)}
 #bjh .creds li{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-bottom:1px solid var(--line);font-size:17px;font-weight:700}
 #bjh .creds li b{color:var(--red-hi);font-size:14px;font-weight:900;padding-top:3px}
-#bjh .coach{display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:center;margin-top:80px;padding:28px;background:var(--bg-3)}
-#bjh .coach img{width:160px;height:200px;object-fit:cover}
-#bjh .coach small{color:var(--text-3);font-size:13px;font-weight:700}
-#bjh .coach h3{margin-top:6px;font-size:24px;font-weight:900;letter-spacing:-.04em}
-#bjh .coach p{margin-top:10px;color:var(--text-2);font-size:15.5px;line-height:1.8}
+
+#bjh .coach2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+#bjh .coach-label{display:inline-block;margin-bottom:20px;padding:6px 12px;background:var(--red);color:#fff;font-size:13px;font-weight:800}
+#bjh .cstats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:1px solid var(--line)}
+#bjh .cstats div{padding:22px 0 4px}
+#bjh .cstats div + div{padding-left:20px;border-left:1px solid var(--line)}
+#bjh .cstats b{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:900;letter-spacing:-.04em;line-height:1}
+#bjh .cstats b i{font-style:normal;color:var(--red-hi)}
+#bjh .cstats span{display:block;margin-top:10px;color:var(--text-3);font-size:13.5px;font-weight:600;line-height:1.4}
+#bjh .coach2 .creds{margin-top:32px}
+#bjh .coach-photo{position:relative;isolation:isolate}
+#bjh .coach-photo:before{content:"";position:absolute;inset:-14% -18% -10% -10%;background:radial-gradient(closest-side,rgba(212,42,53,.26),transparent 72%);z-index:-1}
+#bjh .coach-photo img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center 30%}
+#bjh .coach-photo figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:var(--red);color:#fff;font-size:14px;font-weight:800}
 
 /* 6 수업 고르기 */
 #bjh .pick{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:10px;margin-top:48px;align-items:stretch}
@@ -209,7 +218,8 @@
 #bjh.js .rv.in{opacity:1;transform:none}
 
 @media(max-width:900px){
-  #bjh .hero-grid,#bjh .poison,#bjh .story,#bjh .faq,#bjh .loc{grid-template-columns:1fr;gap:40px}
+  #bjh .hero-grid,#bjh .poison,#bjh .story,#bjh .faq,#bjh .loc,#bjh .coach2{grid-template-columns:1fr;gap:40px}
+  #bjh .coach-photo{order:-1}
   #bjh .pick{grid-template-columns:1fr}
   #bjh .pick .main{order:-1}
   #bjh .reviews{grid-template-columns:1fr 1fr}
@@ -227,8 +237,8 @@
   #bjh .pains{grid-template-columns:1fr}
   #bjh .verdict{flex-direction:column;align-items:flex-start;padding:28px 22px}
   #bjh .vs,#bjh .scene{grid-template-columns:1fr}
-  #bjh .coach{grid-template-columns:1fr;padding:22px}
-  #bjh .coach img{width:100%;height:auto;aspect-ratio:4/5}
+  #bjh .cstats div + div{padding-left:12px}
+  #bjh .cstats span{font-size:12px}
   #bjh .reviews{grid-template-columns:1fr}
   #bjh .gallery{grid-template-columns:repeat(2,1fr)}
   #bjh .apply{padding:44px 22px}
@@ -373,13 +383,34 @@
           </ol>
         </div>
       </div>
-      <div class="coach rv">
-        <img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun.webp" alt="강다은 수석코치" loading="lazy">
-        <div>
-          <small>함께 가르치는 수석코치</small>
-          <h3>강다은 수석코치 / 다은쌤</h3>
-          <p>비제이라이프스쿨 부원장, 교육경력 7년, 누적 수강생 4000명 이상.<br>역할극 심리치료사 1급, 액팅 스피치 전문 드라마테라피스트.<br>탈잉 플랫폼 연기 자신감 클래스 1위, 유튜브 '마음다은' 크리에이터.</p>
+    </div>
+  </section>
+
+  <!-- 5b. 다은쌤 -->
+  <section class="s dk2">
+    <div class="w">
+      <div class="coach2">
+        <div class="rv">
+          <p class="coach-label">함께 가르치는 수석코치</p>
+          <h2 class="h2">강다은 수석코치<br><span class="hot">다은쌤</span></h2>
+          <p class="lead">화, 목 수업은 다은쌤이 직접 맡습니다.<br>역할극 심리치료와 연기로 굳은 마음과 표현을 풀어줍니다.</p>
+          <div class="cstats">
+            <div><b>7<i>년</i></b><span>교육 경력</span></div>
+            <div><b>4,000<i>+</i></b><span>누적 수강생</span></div>
+            <div><b>1<i>위</i></b><span>탈잉 연기 자신감 클래스</span></div>
+          </div>
+          <ol class="creds">
+            <li><b>01</b>비제이라이프스쿨 부원장</li>
+            <li><b>02</b>역할극 심리치료사 1급</li>
+            <li><b>03</b>액팅 스피치 전문 드라마테라피스트</li>
+            <li><b>04</b>탈잉 플랫폼 연기 자신감 클래스 1위</li>
+            <li><b>05</b>유튜브 '마음다은' 크리에이터</li>
+          </ol>
         </div>
+        <figure class="coach-photo rv" style="--d:.08s">
+          <img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun.webp" alt="강다은 수석코치" loading="lazy">
+          <figcaption>수석코치 다은쌤</figcaption>
+        </figure>
       </div>
     </div>
   </section>
