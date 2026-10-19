@@ -138,10 +138,12 @@
 #bjh .cstats b i{font-style:normal;color:var(--red-hi)}
 #bjh .cstats span{display:block;margin-top:10px;color:var(--text-3);font-size:13.5px;font-weight:600;line-height:1.4}
 #bjh .coach2 .creds{margin-top:32px}
-#bjh .coach-photo{position:relative;isolation:isolate}
-#bjh .coach-photo:before{content:"";position:absolute;inset:-14% -18% -10% -10%;background:radial-gradient(closest-side,rgba(212,42,53,.26),transparent 72%);z-index:-1}
-#bjh .coach-photo img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center 30%}
-#bjh .coach-photo figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:var(--red);color:#fff;font-size:14px;font-weight:800}
+#bjh .coach-pics{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:520px;width:100%;justify-self:end}
+#bjh .coach-pics:before{content:"";position:absolute;inset:-14% -18% -10% -10%;background:radial-gradient(closest-side,rgba(212,42,53,.22),transparent 72%);z-index:-1}
+#bjh .coach-pics figure{position:relative;margin:0}
+#bjh .coach-pics img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 30%}
+#bjh .coach-pics figcaption{position:absolute;left:0;bottom:0;padding:6px 10px;background:var(--bg);color:#fff;font-size:13px;font-weight:800}
+#bjh .coach-pics figure:first-child figcaption{background:var(--red)}
 
 /* 6 수업 고르기 */
 #bjh .pick{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:10px;margin-top:48px;align-items:stretch}
@@ -219,7 +221,7 @@
 
 @media(max-width:900px){
   #bjh .hero-grid,#bjh .poison,#bjh .story,#bjh .faq,#bjh .loc,#bjh .coach2{grid-template-columns:1fr;gap:40px}
-  #bjh .coach-photo{order:-1}
+  #bjh .coach-pics{order:-1;max-width:none;justify-self:stretch}
   #bjh .pick{grid-template-columns:1fr}
   #bjh .pick .main{order:-1}
   #bjh .reviews{grid-template-columns:1fr 1fr}
@@ -407,10 +409,10 @@
             <li><b>05</b>유튜브 '마음다은' 크리에이터</li>
           </ol>
         </div>
-        <figure class="coach-photo rv" style="--d:.08s">
-          <img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun.webp" alt="강다은 수석코치" loading="lazy">
-          <figcaption>수석코치 다은쌤</figcaption>
-        </figure>
+        <div class="coach-pics rv" style="--d:.08s">
+          <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun.webp" alt="강다은 수석코치" loading="lazy"><figcaption>수석코치 다은쌤</figcaption></figure>
+          <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun-class.webp" alt="다은쌤 수업 현장" loading="lazy"><figcaption>수업 현장</figcaption></figure>
+        </div>
       </div>
     </div>
   </section>
