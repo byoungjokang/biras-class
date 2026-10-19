@@ -158,11 +158,8 @@
 #bjh .card li{position:relative;padding-left:18px;font-size:15px;line-height:1.6;color:var(--ink)}
 #bjh .card.main li{color:#fff}
 #bjh .card li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--red)}
-#bjh .price{margin-top:auto;padding-top:24px}
-#bjh .price b{display:block;font-size:30px;font-weight:900;letter-spacing:-.04em}
-#bjh .price small{display:block;margin-top:2px;color:var(--ink-3);font-size:13.5px;font-weight:600}
-#bjh .card.main .price small{color:rgba(255,255,255,.5)}
-#bjh .card .btn{margin-top:18px;width:100%}
+#bjh .card ul{margin-bottom:28px}
+#bjh .card .btn{margin-top:auto;width:100%}
 #bjh .card:not(.main) .btn{background:var(--ink)}
 #bjh .card:not(.main) .btn:hover{background:#2a2a2a}
 
@@ -424,28 +421,25 @@
       <p class="lead rv">어디서 시작해도 됩니다. 다만 진심이어야 합니다.</p>
       <div class="pick">
         <article class="card rv">
-          <span class="for">처음이라 망설여진다면</span>
-          <h3>원데이 미친수업</h3>
-          <p>하루 수업으로 비라스를 먼저 경험해보세요. 문제 진단부터 최적화 세션, 캐릭터 리빌딩까지 3시간 동안 몸으로 부딪힙니다.</p>
-          <ul><li>월~목 저녁 7시~10시 중 하루 선택</li><li>월, 수 병조쌤 직강 / 화, 목 다은쌤</li></ul>
-          <div class="price"><b>11만원</b><small>가격은 추후 인상될 수 있습니다</small></div>
-          <a class="btn" href="https://lifeschool.crekit.io/crazyclass" target="_blank" rel="noopener">미친수업 보기</a>
-        </article>
-        <article class="card rv" style="--d:.06s">
           <span class="for">혼자, 내 속도로 하고 싶다면</span>
           <h3>온라인 자신감 인큐베이팅 코스 2.0</h3>
           <p>표현력과 대화스킬을 VOD 50편 이상으로 배웁니다. 한 번 구매로 평생 수강합니다.</p>
           <ul><li>200만원 상당 인생 대화 스킬 PDF 교안</li><li>오프라인 미친수업 무료 참가권 2회</li><li>코스 전용 단톡방, 코치진 피드백</li></ul>
-          <div class="price"><b>198만원</b><small>평생 수강, 1회 결제</small></div>
           <a class="btn" href="https://lifeschool.crekit.io/onlinebj" target="_blank" rel="noopener">온라인 코스 보기</a>
+        </article>
+        <article class="card rv" style="--d:.06s">
+          <span class="for">처음이라 망설여진다면</span>
+          <h3>원데이 미친수업</h3>
+          <p>하루 수업으로 비라스를 먼저 경험해보세요. 문제 진단부터 최적화 세션, 캐릭터 리빌딩까지 3시간 동안 몸으로 부딪힙니다.</p>
+          <ul><li>월~목 저녁 7시~10시 중 하루 선택</li><li>월, 수 병조쌤 직강 / 화, 목 다은쌤</li></ul>
+          <a class="btn" href="https://lifeschool.crekit.io/crazyclass" target="_blank" rel="noopener">미친수업 보기</a>
         </article>
         <article class="card main rv" style="--d:.12s">
           <span class="for">제대로 바뀌고 싶다면 (가장 추천)</span>
           <h3>프리미엄 오프라인 클래스<br>입학 올인원</h3>
           <p>오프라인 첫 달 4주와 온라인 평생 수강을 함께. 코치진이 직접 코칭하는 극하드캐리 실기수업입니다.</p>
           <ul><li>코치진 밀착 집중 하드캐리</li><li>VIP 수강생 오픈카톡방</li><li>코치진의 1:1 대면상담</li></ul>
-          <div class="price"><b>300만원</b><small>따로 등록하면 398만원, VAT 별도</small></div>
-          <a class="btn" href="https://byoungjokang.github.io/biras-class/" target="_blank" rel="noopener">수강안내 자세히 보기</a>
+          <a class="btn" href="#bjh-apply" data-apply>수강신청서 작성하기</a>
         </article>
       </div>
     </div>
@@ -485,7 +479,7 @@
         <details><summary>처음인데 낯선 사람과 장소에 가기 두렵습니다.</summary><p>누구나 처음은 두렵습니다. 낯선 사람과 상황에 차근차근 적응할 수 있도록 코치진이 함께합니다.</p></details>
         <details><summary>사람들 앞에서 발표하다가 망신당하지 않을까요?</summary><p>이 수업은 잘하고 못하고를 평가하는 자리가 아닙니다. 불편한 순간을 안전하게 직면하고 넘어설 때 실제 자신감이 만들어집니다.</p></details>
         <details><summary>배워본 적이 없는데 못하면 어떻게 하죠?</summary><p>못하는 것이 당연합니다. 그래서 수업을 듣는 것입니다. 모든 훈련 과정에 코치진이 함께합니다.</p></details>
-        <details><summary>꼭 첫 달 올인원을 들어야 하나요?</summary><p>가장 추천드립니다. 실기수업과 인간관계 수업이 병행되지 않으면 빠른 변화가 어렵습니다. 부담되실 경우 오프라인 첫 달(200만원), 온라인 평생(198만원) 별도 구매도 가능합니다.</p></details>
+        <details><summary>꼭 첫 달 올인원을 들어야 하나요?</summary><p>가장 추천드립니다. 실기수업과 인간관계 수업이 병행되지 않으면 빠른 변화가 어렵습니다. 부담되실 경우 오프라인 첫 달, 온라인 평생 코스를 따로 신청하실 수도 있습니다.</p></details>
         <details><summary>매달 모집하는 기간이 따로 있나요?</summary><p>없습니다. 비라스는 개인에게 초점이 맞춰진 수업이기 때문에 언제 입학하셔도 배우는 데 지장이 없습니다.</p></details>
         <details><summary>저의 약한 모습이 드러날까 무섭습니다.</summary><p>소심하고 약한 모습이 드러날 수 있습니다. 하지만 당신은 두려워하기 위해 사는 것이 아니라 행복하기 위해 살아갑니다. 그 모습까지 안전하게 표현하는 법을 가르쳐드립니다.</p></details>
       </div>
