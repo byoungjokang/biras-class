@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>비제이라이프스쿨 홈 시안 v2</title>
+<style>html,body{margin:0;background:#0c0c0e}
+.imweb-mock{background:#fff;color:#111;font-family:'Pretendard',sans-serif;text-align:center;padding:56px 20px 72px}
+.imweb-mock b{display:block;font-size:20px} .imweb-mock p{margin:10px auto 0;max-width:30em;color:#666;line-height:1.7;font-size:15px}
+.imweb-mock form{margin:24px auto 0;max-width:420px;display:grid;gap:8px} .imweb-mock input{padding:14px;border:1px solid #ccc;font-size:15px}
+</style></head><body>
+<!-- 비제이라이프스쿨 홈 v2 (아임웹 코드 블록용)
+     붙이는 법: 아임웹 홈 편집 > 섹션 추가 > 코드(HTML) 블록 > 이 파일 전체 붙여넣기.
+     기존 '수강 신청' 폼 섹션은 지우지 말고 이 블록 바로 아래에 둔다. '수강안내 PDF 받기' 버튼이 그 폼으로 스크롤한다.
+     스타일은 전부 #bjh 안에만 적용되어 아임웹 다른 섹션에 영향 없음. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+#bjh{
+  --bg:#0c0c0e;--bg-2:#131316;--bg-3:#1b1b1f;
+  --text:#f2f2f0;--text-2:rgba(242,242,240,.72);--text-3:rgba(242,242,240,.48);
+  --line:rgba(242,242,240,.11);--line-2:rgba(242,242,240,.22);
+  --paper:#f5f3ef;--paper-2:#ebe7e0;--ink:#161616;--ink-2:#4b4b4b;--ink-3:#8a8a8a;--rule:#d9d4cb;
+  --red:#d42a35;--red-hi:#ff5964;--red-ink:#b8202b;--red-soft:rgba(212,42,53,.12);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --sans:'Pretendard Variable','Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+  position:relative;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;
+  word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;text-align:left;overflow:hidden;overflow:clip
+}
+#bjh *,#bjh *:before,#bjh *:after{box-sizing:border-box}
+#bjh h1,#bjh h2,#bjh h3,#bjh p,#bjh ul,#bjh ol,#bjh li,#bjh figure,#bjh blockquote{margin:0;padding:0;font-family:inherit;letter-spacing:inherit}
+#bjh ul,#bjh ol{list-style:none}
+#bjh a{color:inherit;text-decoration:none}
+#bjh img{display:block;max-width:100%;height:auto;border:0}
+#bjh button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#bjh strong{font-weight:800}
+#bjh .w{width:min(100% - 40px,1040px);margin:0 auto}
+#bjh .s{position:relative;padding:112px 0}
+#bjh .dk{background:var(--bg);color:var(--text)}
+#bjh .dk2{background:var(--bg-2);color:var(--text)}
+#bjh .lt{background:var(--paper);color:var(--ink)}
+#bjh .hot{color:var(--red-hi)}
+#bjh .lt .hot{color:var(--red-ink)}
+#bjh .dim{color:var(--text-3)}
+#bjh .lt .dim{color:var(--ink-3)}
+#bjh .h2{font-size:clamp(30px,4.4vw,52px);font-weight:850;line-height:1.22;letter-spacing:-.045em}
+#bjh .lead{margin-top:20px;max-width:36em;font-size:clamp(16.5px,1.7vw,19px);line-height:1.85;color:var(--text-2)}
+#bjh .lt .lead{color:var(--ink-2)}
+#bjh .btn{display:inline-flex;align-items:center;justify-content:center;min-height:60px;padding:16px 30px;background:var(--red);color:#fff;font-size:17px;font-weight:850;letter-spacing:-.02em;white-space:nowrap;transition:transform .3s var(--ease),background .2s ease}
+#bjh .btn:hover{background:#e3323e;transform:translateY(-2px)}
+#bjh .btn:active{transform:none}
+#bjh .btn.ghost{background:transparent;border:1px solid var(--line-2);color:var(--text)}
+#bjh .btn.ghost:hover{background:var(--bg-3)}
+#bjh .lt .btn.ghost{border-color:var(--ink);color:var(--ink)}
+#bjh .lt .btn.ghost:hover{background:var(--paper-2)}
+#bjh .btn:focus-visible,#bjh .pain:focus-visible,#bjh summary:focus-visible{outline:2px solid var(--red-hi);outline-offset:3px}
+
+/* 1 첫 화면 */
+#bjh .hero{padding:96px 0 0;isolation:isolate}
+#bjh .hero:before{content:"";position:absolute;right:-12%;top:-18%;width:780px;max-width:130vw;aspect-ratio:1;background:radial-gradient(closest-side,rgba(212,42,53,.22),transparent 72%);z-index:-1}
+#bjh .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+#bjh .brand{margin-bottom:26px;color:var(--text-3);font-size:14px;font-weight:700;letter-spacing:.08em}
+#bjh .hero h1{font-size:clamp(40px,6.2vw,74px);font-weight:900;line-height:1.14;letter-spacing:-.06em}
+#bjh .hero h1 span{color:var(--red-hi)}
+#bjh .hero-sub{margin-top:24px;max-width:28em;color:var(--text-2);font-size:clamp(17px,1.9vw,20px);line-height:1.8}
+#bjh .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px}
+#bjh .hero-photo{position:relative;align-self:end}
+#bjh .hero-photo img{width:100%;max-width:440px;margin-left:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6))}
+#bjh .stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--line)}
+#bjh .stats div{padding:28px 0 32px}
+#bjh .stats div + div{padding-left:28px;border-left:1px solid var(--line)}
+#bjh .stats b{display:block;font-size:clamp(30px,4vw,46px);font-weight:900;letter-spacing:-.04em;line-height:1}
+#bjh .stats b i{font-style:normal;color:var(--red-hi)}
+#bjh .stats span{display:block;margin-top:10px;color:var(--text-3);font-size:14px;font-weight:600}
+
+/* 2 고통 체크 */
+#bjh .pain-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+#bjh .pain-count{flex:none;font-size:clamp(40px,5vw,60px);font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--red-ink)}
+#bjh .pain-count span{font-size:.4em;color:var(--ink-3)}
+#bjh .pains{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px}
+#bjh .pain{display:flex;align-items:center;gap:16px;width:100%;min-height:68px;padding:18px 22px;background:#fff;border:1px solid var(--rule);text-align:left;font-size:17px;font-weight:650;line-height:1.5;color:var(--ink);transition:border-color .2s ease,background .2s ease}
+#bjh .pain:hover{border-color:var(--ink-3)}
+#bjh .pain .box{flex:0 0 22px;height:22px;border:1.5px solid var(--ink-3);display:grid;place-items:center}
+#bjh .pain .box:after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px) scale(0);transition:transform .25s var(--ease)}
+#bjh .pain[aria-pressed="true"]{background:#fff3f2;border-color:var(--red)}
+#bjh .pain[aria-pressed="true"] .box{background:var(--red);border-color:var(--red)}
+#bjh .pain[aria-pressed="true"] .box:after{transform:rotate(45deg) translate(-1px,-1px) scale(1)}
+#bjh .verdict{margin-top:40px;padding:34px 32px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px}
+#bjh .verdict p{font-size:clamp(20px,2.4vw,26px);font-weight:750;line-height:1.5;letter-spacing:-.03em}
+#bjh .verdict strong{flex:none;font-size:clamp(22px,2.8vw,32px);font-weight:900;color:var(--red-hi);letter-spacing:-.04em}
+
+/* 3 무의식의 독 */
+#bjh .tried{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+#bjh .tried li{padding:10px 16px;border:1px solid var(--line-2);color:var(--text-2);font-size:15.5px;font-weight:600;text-decoration:line-through;text-decoration-color:rgba(242,242,240,.4)}
+#bjh .fail{margin-top:28px;font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-.04em;line-height:1.35}
+#bjh .poison{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:80px;padding-top:64px;border-top:1px solid var(--line);align-items:center}
+#bjh .poison-list{display:grid;gap:8px}
+#bjh .poison-list li{padding:18px 20px;border-left:3px solid var(--red);background:var(--bg-3);font-size:17px;font-weight:700}
+#bjh .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:28px}
+#bjh .tri div{padding:22px 10px;background:var(--bg-3);text-align:center;font-size:19px;font-weight:850}
+#bjh .tri-cap{margin-top:14px;color:var(--text-2);font-size:16px;line-height:1.8}
+#bjh .tri-cap strong{color:var(--text)}
+
+/* 4 강의와 훈련 */
+#bjh .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:44px}
+#bjh .vs > div{padding:30px 28px}
+#bjh .vs .a{background:#fff;border:1px solid var(--rule)}
+#bjh .vs .b{background:var(--ink);color:#fff}
+#bjh .vs h3{font-size:20px;font-weight:850;letter-spacing:-.03em}
+#bjh .vs .a h3{color:var(--ink-3)}
+#bjh .vs .b h3{color:var(--red-hi)}
+#bjh .vs ul{margin-top:18px;display:grid;gap:12px}
+#bjh .vs li{position:relative;padding-left:20px;font-size:16.5px;line-height:1.6}
+#bjh .vs .a li{color:var(--ink-3)}
+#bjh .vs li:before{content:"";position:absolute;left:0;top:.7em;width:8px;height:2px;background:currentColor}
+#bjh .vs .b li{font-weight:700}
+#bjh .vs .b li:before{background:var(--red-hi)}
+#bjh .scene{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin-top:10px}
+#bjh .scene img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+#bjh .scene-cap{margin-top:16px;color:var(--ink-2);font-size:16px;font-weight:700}
+
+/* 5 병조쌤 이야기 */
+#bjh .story{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+#bjh .ba{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#bjh .ba figure{position:relative}
+#bjh .ba img{width:100%;aspect-ratio:3/4;object-fit:cover}
+#bjh .ba figcaption{position:absolute;left:0;bottom:0;padding:6px 10px;background:var(--bg);font-size:13px;font-weight:800}
+#bjh .ba figure:last-child figcaption{background:var(--red)}
+#bjh .past{margin-top:28px;display:grid;gap:2px}
+#bjh .past li{padding:14px 0;border-bottom:1px solid var(--line);color:var(--text-2);font-size:16.5px}
+#bjh .turn{margin-top:28px;font-size:clamp(22px,2.6vw,30px);font-weight:900;letter-spacing:-.04em;line-height:1.4}
+#bjh .creds{margin-top:36px;display:grid;gap:0;border-top:1px solid var(--line-2)}
+#bjh .creds li{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-bottom:1px solid var(--line);font-size:17px;font-weight:700}
+#bjh .creds li b{color:var(--red-hi);font-size:14px;font-weight:900;padding-top:3px}
+
+#bjh .coach2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+#bjh .coach-label{display:inline-block;margin-bottom:20px;padding:6px 12px;background:var(--red);color:#fff;font-size:13px;font-weight:800}
+#bjh .cstats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:1px solid var(--line)}
+#bjh .cstats div{padding:22px 0 4px}
+#bjh .cstats div + div{padding-left:20px;border-left:1px solid var(--line)}
+#bjh .cstats b{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:900;letter-spacing:-.04em;line-height:1}
+#bjh .cstats b i{font-style:normal;color:var(--red-hi)}
+#bjh .cstats span{display:block;margin-top:10px;color:var(--text-3);font-size:13.5px;font-weight:600;line-height:1.4}
+#bjh .coach2 .creds{margin-top:32px}
+#bjh .coach-pics{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:520px;width:100%;justify-self:end}
+#bjh .coach-pics:before{content:"";position:absolute;inset:-14% -18% -10% -10%;background:radial-gradient(closest-side,rgba(212,42,53,.22),transparent 72%);z-index:-1}
+#bjh .coach-pics figure{position:relative;margin:0}
+#bjh .coach-pics img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:center 30%}
+#bjh .coach-pics figcaption{position:absolute;left:0;bottom:0;padding:6px 10px;background:var(--bg);color:#fff;font-size:13px;font-weight:800}
+#bjh .coach-pics figure:first-child figcaption{background:var(--red)}
+
+/* 6 수업 고르기 */
+#bjh .pick{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:10px;margin-top:48px;align-items:stretch}
+#bjh .card{display:flex;flex-direction:column;padding:30px 26px 26px;background:#fff;border:1px solid var(--rule)}
+#bjh .card.main{background:var(--ink);color:#fff;border-color:var(--ink)}
+#bjh .card .for{display:inline-block;align-self:flex-start;padding:6px 12px;background:var(--paper-2);color:var(--ink);font-size:13px;font-weight:800}
+#bjh .card.main .for{background:var(--red);color:#fff}
+#bjh .card h3{margin-top:18px;font-size:23px;font-weight:900;line-height:1.3;letter-spacing:-.04em}
+#bjh .card p{margin-top:12px;color:var(--ink-2);font-size:15.5px;line-height:1.75}
+#bjh .card.main p{color:rgba(255,255,255,.72)}
+#bjh .card ul{margin-top:18px;display:grid;gap:8px}
+#bjh .card li{position:relative;padding-left:18px;font-size:15px;line-height:1.6;color:var(--ink)}
+#bjh .card.main li{color:#fff}
+#bjh .card li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;background:var(--red)}
+#bjh .card ul{margin-bottom:28px}
+#bjh .card .btn{margin-top:auto;width:100%}
+#bjh .card:not(.main) .btn{background:var(--ink)}
+#bjh .card:not(.main) .btn:hover{background:#2a2a2a}
+
+/* 7 후기와 함께한 시간 */
+#bjh .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:44px}
+#bjh .reviews a{display:block;background:var(--bg-3);border:1px solid var(--line);overflow:hidden}
+#bjh .reviews img{width:100%;transition:transform .5s var(--ease)}
+#bjh .reviews a:hover img{transform:scale(1.03)}
+#bjh .note{margin-top:14px;color:var(--text-3);font-size:14px}
+#bjh .gallery{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:150px;gap:6px;margin-top:64px}
+#bjh .gallery figure{position:relative;overflow:hidden}
+#bjh .gallery figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+#bjh .gallery img{width:100%;height:100%;object-fit:cover}
+#bjh .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:12.5px;font-weight:700}
+
+/* 수업에서 하는 일, 후기 문장 */
+#bjh .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:48px}
+#bjh .step{padding:28px 26px 30px;background:var(--bg-3);border-top:3px solid var(--red)}
+#bjh .step small{display:block;color:var(--text-3);font-size:13px;font-weight:800}
+#bjh .step h3{margin-top:10px;font-size:clamp(22px,2.4vw,28px);font-weight:900;letter-spacing:-.04em;line-height:1.3}
+#bjh .step p{margin-top:14px;color:var(--text-2);font-size:16px;line-height:1.85}
+#bjh .step p strong{color:var(--text)}
+#bjh .voices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+#bjh .voices blockquote,#bjh .quotes blockquote{margin:0;padding:24px 24px 22px;border-left:3px solid var(--red-hi);background:var(--bg-2)}
+#bjh .voices p,#bjh .quotes p{font-size:17px;font-weight:700;line-height:1.75;letter-spacing:-.02em}
+#bjh .voices cite,#bjh .quotes cite{display:block;margin-top:12px;color:var(--text-3);font-size:13px;font-style:normal;font-weight:600}
+#bjh .sched{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);color:var(--text-2);font-size:16.5px;line-height:1.8}
+#bjh .sched b{color:var(--text)}
+#bjh .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:44px}
+#bjh .quotes blockquote{background:var(--bg-3)}
+#bjh .proof-sub{margin-top:64px;font-size:20px;font-weight:850;letter-spacing:-.03em}
+#bjh .why{margin-top:40px;padding:28px 26px;background:var(--bg-3)}
+#bjh .why p{color:var(--text-2);font-size:16.5px;line-height:1.85}
+#bjh .why q{color:var(--text);font-weight:800;quotes:none}
+#bjh .why strong{display:block;margin-top:10px;font-size:clamp(22px,2.6vw,30px);font-weight:900;letter-spacing:-.04em;color:var(--red-hi)}
+#bjh .tri-cap strong.hot{color:var(--red-hi)}
+
+/* 8 질문 */
+#bjh .faq{display:grid;grid-template-columns:.7fr 1.3fr;gap:64px;align-items:start}
+#bjh .faq-list{border-top:1.5px solid var(--ink)}
+#bjh details{border-bottom:1px solid var(--rule)}
+#bjh summary{position:relative;list-style:none;cursor:pointer;padding:24px 48px 24px 0;font-size:17.5px;font-weight:750;line-height:1.55;color:var(--ink)}
+#bjh summary::-webkit-details-marker{display:none}
+#bjh summary:before,#bjh summary:after{content:"";position:absolute;right:6px;top:50%;width:16px;height:2px;background:var(--red-ink);transition:transform .3s var(--ease)}
+#bjh summary:after{transform:rotate(90deg)}
+#bjh details[open] summary:after{transform:rotate(0)}
+#bjh details p{padding:0 48px 24px 0;color:var(--ink-2);font-size:16px;line-height:1.85}
+
+/* 9 오시는 길과 신청 */
+#bjh .loc{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+#bjh .loc img{width:100%;aspect-ratio:16/10;object-fit:cover}
+#bjh .addr{margin-top:28px;padding:24px;background:var(--bg-3)}
+#bjh .addr small{color:var(--text-3);font-size:13px;font-weight:700}
+#bjh .addr p{margin-top:6px;font-size:18px;font-weight:800;line-height:1.5}
+#bjh .addr span{display:block;margin-top:4px;color:var(--text-2);font-size:15px}
+#bjh .time{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#bjh .time div{padding:18px 20px;background:var(--bg-3)}
+#bjh .time small{color:var(--text-3);font-size:13px;font-weight:700}
+#bjh .time b{display:block;margin-top:4px;font-size:17px;font-weight:850}
+#bjh .apply{margin-top:96px;padding:56px 40px;background:var(--red);color:#fff;text-align:center}
+#bjh .apply h2{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.045em;line-height:1.25}
+#bjh .apply p{margin-top:16px;font-size:17px;line-height:1.8;color:rgba(255,255,255,.9)}
+#bjh .apply .btn{margin-top:28px;background:#fff;color:var(--red-ink)}
+#bjh .apply .btn:hover{background:#fff1f0}
+#bjh .apply small{display:block;margin-top:14px;font-size:13.5px;color:rgba(255,255,255,.8)}
+
+/* 하단 고정 */
+#bjh .stick{position:fixed;left:0;right:0;bottom:0;z-index:9990;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(12,12,14,.92);border-top:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transform:translateY(110%);transition:transform .4s var(--ease)}
+#bjh .stick.on{transform:none}
+#bjh .stick-in{width:min(100%,760px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+#bjh .stick p{font-size:13px;line-height:1.4;color:var(--text-2)}
+#bjh .stick p b{display:block;color:var(--text);font-size:16px;font-weight:850}
+#bjh .stick .btn{min-height:50px;padding:12px 20px;font-size:15px}
+
+/* 등장 */
+#bjh.js .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+#bjh.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  #bjh .hero-grid,#bjh .poison,#bjh .story,#bjh .faq,#bjh .loc,#bjh .coach2{grid-template-columns:1fr;gap:40px}
+  #bjh .coach-pics{order:-1;max-width:none;justify-self:stretch}
+  #bjh .pick{grid-template-columns:1fr}
+  #bjh .pick .main{order:-1}
+  #bjh .reviews{grid-template-columns:1fr 1fr}
+  #bjh .steps,#bjh .quotes{grid-template-columns:1fr}
+  #bjh .gallery{grid-template-columns:repeat(3,1fr);grid-auto-rows:120px}
+}
+@media(max-width:760px){
+  #bjh .w{width:min(100% - 36px,1040px)}
+  #bjh .s{padding:80px 0}
+  #bjh .hero{padding-top:56px}
+  #bjh .hero-photo img{max-width:300px;margin:0 auto}
+  #bjh .hero-cta .btn{flex:1 1 100%}
+  #bjh .stats div{padding:22px 0 24px}
+  #bjh .stats div + div{padding-left:14px}
+  #bjh .stats span{font-size:12.5px}
+  #bjh .pains{grid-template-columns:1fr}
+  #bjh .verdict{flex-direction:column;align-items:flex-start;padding:28px 22px}
+  #bjh .vs,#bjh .scene{grid-template-columns:1fr}
+  #bjh .cstats div + div{padding-left:12px}
+  #bjh .cstats span{font-size:12px}
+  #bjh .reviews{grid-template-columns:1fr}
+  #bjh .voices{grid-template-columns:1fr}
+  #bjh .gallery{grid-template-columns:repeat(2,1fr)}
+  #bjh .apply{padding:44px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+  #bjh *{transition:none!important;animation:none!important}
+  #bjh.js .rv{opacity:1;transform:none}
+}
+</style>
+
+<div id="bjh">
+
+  <!-- 1. 첫 화면 -->
+  <section class="s dk hero">
+    <div class="w">
+      <div class="hero-grid">
+        <div>
+          <p class="brand">비제이라이프스쿨 비라스</p>
+          <h1>사람은 변합니다.<br><span>이 수업을 받으면요.</span></h1>
+          <p class="hero-sub">17년간 1만 명이 다녀간 수업</p>
+          <div class="hero-cta">
+            <a class="btn" href="#bjh-apply" data-apply>수강안내 PDF 받기</a>
+            <a class="btn ghost" href="#bjh-pick">나에게 맞는 수업 찾기</a>
+          </div>
+        </div>
+        <figure class="hero-photo"><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/5767e6cb-6257-4690-987d-fa94312dff98" alt="비제이라이프스쿨 강병조 대표"></figure>
+      </div>
+      <div class="stats">
+        <div><b>17<i>년</i></b><span>교육 경력</span></div>
+        <div><b>1만<i>명+</i></b><span>누적 수강생</span></div>
+        <div><b>5만<i>+</i></b><span>유튜브 '병조쌤' 구독자</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 고통 체크 -->
+  <section class="s lt">
+    <div class="w">
+      <div class="pain-head rv">
+        <div>
+          <p class="lead" style="margin:0 0 12px"><span class="hot">여기 오는 사람들은 대부분 이 중 하나 때문에 옵니다.</span></p>
+          <h2 class="h2">몇 개나<br>해당되나요?</h2>
+          <p class="lead">해당되는 항목을 눌러보세요.</p>
+        </div>
+        <div class="pain-count" aria-live="polite"><b id="bjh-cnt">0</b><span> / 10</span></div>
+      </div>
+      <div class="pains rv" id="bjh-pains">
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>자신감이 부족하다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>남의 눈치를 보고 회피한다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>할 말을 못하고 관계에 끌려다닌다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>상처를 잘 받고 멘탈이 쉽게 무너진다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>연애와 대화, 처세가 어렵다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>이성에게 매력적으로 보이지 않는다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>목소리가 기어들어가고 위축된다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>감정표현이 어색해 로봇처럼 보인다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>내 재능을 제대로 펼치지 못한다</button>
+        <button class="pain" type="button" aria-pressed="false"><span class="box"></span>성공하고 싶지만 방법을 모르겠다</button>
+      </div>
+      <div class="verdict rv">
+        <p>하나라도 눌렀다면,<br>타고난 게 아닙니다.</p>
+        <strong>쌓인 겁니다.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 해볼 만큼 해봤다, 무의식의 독 -->
+  <section class="s dk2">
+    <div class="w">
+      <h2 class="h2 rv">유튜브도 보고, 책도 읽고,<br>강의도 들어봤을 겁니다.</h2>
+      <ul class="tried rv">
+        <li>유튜브 영상</li><li>독서</li><li>온라인 강의</li><li>스피치, 연기학원</li><li>연애 강의</li><li>마음공부</li>
+      </ul>
+      <p class="fail rv">그런데 왜 그대로일까요?<br><span class="hot">아는 것과 되는 것은 다르기 때문입니다.</span></p>
+      <p class="lead rv">머리는 이미 답을 압니다.<br>몸이 따라오지 않을 뿐입니다.</p>
+
+      <div class="poison">
+        <div class="rv">
+          <h2 class="h2" style="font-size:clamp(26px,3.4vw,40px)">어릴 때부터 쌓인 상처가<br><span class="hot">성격이 됐습니다</span></h2>
+          <ul class="poison-list" style="margin-top:28px">
+            <li>어린 시절 트라우마와 상처</li>
+            <li>두려움과 거절에 대한 공포</li>
+            <li>자의식과 방어기제</li>
+            <li>억압된 감정들</li>
+          </ul>
+        </div>
+        <div class="rv" style="--d:.08s">
+          <p class="lead" style="margin:0">이 독이 세 가지를 바꿉니다.</p>
+          <div class="tri"><div>생각</div><div>감정</div><div>행동</div></div>
+          <p class="tri-cap">우리는 그걸 성격이라고 부릅니다.<br>그래서 성격은 결심으로 안 바뀝니다.<br><strong class="hot">독을 빼내야 바뀝니다.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 강의와 훈련 -->
+  <section class="s lt">
+    <div class="w">
+      <h2 class="h2 rv">듣고 끝나는 수업이 아닙니다.<br><span class="hot">부딪히는 수업입니다.</span></h2>
+      <div class="vs rv">
+        <div class="a">
+          <h3>일반적인 강의</h3>
+          <ul><li>정보 전달이 목적</li><li>듣고 끝나는 이론수업</li><li>시간이 오래 걸림</li><li>실질적 변화가 약함</li></ul>
+        </div>
+        <div class="b">
+          <h3>비라스</h3>
+          <ul><li>몸과 감정을 통해 느끼는 경험 위주</li><li>일상에서 적용 가능한 실전형 수업</li><li>한 만큼 성장하는 정직한 수업</li><li>변할 때까지 하는 고강도 훈련</li></ul>
+        </div>
+      </div>
+      <div class="scene rv">
+        <img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/7a157be5-a2b0-4ce9-a617-6e0a11fe3f6a" alt="고강도 훈련 장면" loading="lazy">
+        <img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/15dbb059-b7db-494b-8710-4d65bab3c95f" alt="수강생과 마주 서서 훈련하는 장면" loading="lazy">
+      </div>
+      <p class="scene-cap rv">머리로 이해하는 데서 끝나면, 내일도 똑같습니다.<br>비라스는 몸이 먼저 기억하게 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 4b. 수업에 오면 하는 일 -->
+  <section class="s dk">
+    <div class="w">
+      <h2 class="h2 rv">수업에 오면<br><span class="hot">이걸 합니다</span></h2>
+      <div class="steps">
+        <div class="step rv">
+          <small>진단</small>
+          <h3>드러냅니다</h3>
+          <p>대본을 받습니다. 10~20분 연습하고 사람들 앞에서 발표합니다. 말투, 발성, 감정표현, 그리고 무의식에 쌓인 습관이 그대로 드러납니다.<br><strong>숨기던 내가 처음으로 보입니다.</strong></p>
+        </div>
+        <div class="step rv" style="--d:.06s">
+          <small>최적화 세션</small>
+          <h3>꺼냅니다</h3>
+          <p>몸, 호흡, 감정을 푸는 비라스만의 3단계 훈련입니다.<br><strong>오랫동안 눌러 담아둔 두려움과 상처를 밖으로 꺼냅니다.</strong></p>
+        </div>
+        <div class="step rv" style="--d:.12s">
+          <small>캐릭터 리빌딩</small>
+          <h3>새로 입힙니다</h3>
+          <p>가벼워진 상태로 새 캐릭터를 몸에 익힙니다. 발성, 발음, 화술, 제스처, 대화를 놀이처럼 반복합니다.<br><strong>이게 쌓이면 수업 밖에서도 그 사람으로 살게 됩니다.</strong></p>
+        </div>
+      </div>
+      <div class="voices">
+        <blockquote class="rv"><p>"밖에서 이런 짓을 한다면 미친놈 소리를 듣고 유튜브에 박제가 될 것이다. 하지만 여긴 모두가 미쳤다."</p><cite>수강생 후기</cite></blockquote>
+        <blockquote class="rv" style="--d:.06s"><p>"가장 좋았던 점은 일단 무조건 하게 된다는 것이었다. 아무리 의지가 약하고 소심해도 할 수밖에 없다."</p><cite>수강생 후기</cite></blockquote>
+      </div>
+      <p class="sched rv"><b>월~목 저녁 7시부터 10시까지.</b> 월, 수는 병조쌤, 화, 목은 다은쌤이 직접 가르칩니다.</p>
+    </div>
+  </section>
+
+  <!-- 4c. 실제 후기 -->
+  <section class="s dk2">
+    <div class="w">
+      <h2 class="h2 rv">바뀐 사람들이<br><span class="hot">직접 보낸 메시지입니다</span></h2>
+      <div class="quotes">
+        <blockquote class="rv"><p>"소심한 성격 탓에 버스벨도 못 누르고, 사람 눈 하나 제대로 쳐다보지 못하고, 식당 가면 주문하기도 무서워 망설이던 제가 단 몇 개월 만에 두려울 게 없는 사람으로 살아갈 수 있게 되었습니다."</p><cite>수강생 카톡</cite></blockquote>
+        <blockquote class="rv" style="--d:.06s"><p>"수업 받기 전이랑 딴 사람이 되어버렸네요. 정말 인간을 제대로 바꿔주는 곳은 여기밖에 없는 것 같습니다."</p><cite>수강생 카톡</cite></blockquote>
+        <blockquote class="rv" style="--d:.12s"><p>"오늘 30명 앞에서 강의하는 것도 하나도 안 떨렸어요!"</p><cite>수강생 카톡</cite></blockquote>
+        <blockquote class="rv"><p>"사람들이랑 있으면 할 말도 없고 눈치 보는 성격 때문에 우울할 정도였는데.. 요즘은 사람 대하는 게 너무 편해졌어요."</p><cite>수강생 카톡</cite></blockquote>
+        <blockquote class="rv" style="--d:.06s"><p>"발표도 너무 무서워서 피하던 제가 이젠 당당하게 나가고 잘한다는 칭찬도 듣고 행복합니다."</p><cite>수강생 카톡</cite></blockquote>
+        <blockquote class="rv" style="--d:.12s"><p>"한 번의 수업, 3시간만으로도 내 생각의 틀을 깨부시고 내 행동이 달라졌다."</p><cite>미친수업 수강 후기</cite></blockquote>
+      </div>
+      <p class="proof-sub rv">후기 캡처 원본</p>
+      <div class="reviews" style="margin-top:20px">
+        <a class="rv" href="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/eb6bd656-0813-4b96-bd0f-ec8af618b701" target="_blank" rel="noopener"><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/eb6bd656-0813-4b96-bd0f-ec8af618b701" alt="수강생 후기 1" loading="lazy"></a>
+        <a class="rv" style="--d:.06s" href="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/7b561b26-7171-4472-a6a7-c1d4a8831e54" target="_blank" rel="noopener"><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/7b561b26-7171-4472-a6a7-c1d4a8831e54" alt="수강생 후기 2" loading="lazy"></a>
+        <a class="rv" style="--d:.12s" href="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/34d6ca3b-5da4-49d4-b7a0-9eb7e10171c3" target="_blank" rel="noopener"><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/34d6ca3b-5da4-49d4-b7a0-9eb7e10171c3" alt="수강생 후기 3" loading="lazy"></a>
+      </div>
+      <p class="note rv">이미지를 누르면 실제 후기 캡처를 크게 볼 수 있습니다.</p>
+
+      <div class="gallery rv">
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-party.webp" alt="비라스 파티" loading="lazy"><figcaption>비라스 파티</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-workshop.webp" alt="비라스 여름 워크샵" loading="lazy"><figcaption>여름 워크샵</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-poolparty.webp" alt="반얀트리 풀파티" loading="lazy"><figcaption>반얀트리 풀파티</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-mt.webp" alt="풀빌라 MT" loading="lazy"><figcaption>풀빌라 MT</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-wedding.webp" alt="수강생 결혼" loading="lazy"><figcaption>수강생 결혼</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-workout.webp" alt="같이 운동도 하고" loading="lazy"><figcaption>같이 운동도 하고</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-bookclub.webp" alt="우리끼리 독서모임" loading="lazy"><figcaption>우리끼리 독서모임</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-profile.webp" alt="단체 프로필" loading="lazy"><figcaption>단체 프로필</figcaption></figure>
+        <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/g-sauna.webp" alt="찜질방" loading="lazy"><figcaption>찜질방</figcaption></figure>
+      </div>
+      <p class="note rv">수강생들과 코치진이 17년간 함께 만들어낸 우리의 증명입니다.</p>
+    </div>
+  </section>
+
+  <!-- 5. 병조쌤 이야기, 코치진 -->
+  <section class="s dk">
+    <div class="w">
+      <div class="story">
+        <div class="rv">
+          <div class="ba">
+            <figure><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/4f723a5a-54ac-43c7-bc29-8c8565d2f656" alt="병조쌤 과거" loading="lazy"><figcaption>찐따 시절</figcaption></figure>
+            <figure><img src="https://public-assets.crekit.io/site/WDar30ZJ1JM251Nm/af0563bb-eb2b-4eb1-826a-7aaa95882649" alt="병조쌤 현재" loading="lazy"><figcaption>현재</figcaption></figure>
+          </div>
+        </div>
+        <div class="rv" style="--d:.08s">
+          <h2 class="h2">이 수업을 만든 사람도<br><span class="hot">원래 이랬습니다</span></h2>
+          <ul class="past">
+            <li>태생적으로 겁 많고 소심한 녀석</li>
+            <li>열등감 컴플렉스가 심한 인간</li>
+            <li>이성에게 다가갈 용기 없는 인간</li>
+            <li>상처에 취약한 나약한 인간</li>
+          </ul>
+          <p class="turn">그런 제가 바뀌었습니다.<br><span class="hot">그래서 바뀌는 방법을 압니다.</span></p>
+          <ol class="creds">
+            <li><b>01</b>서울예술대학교 연기과 졸업</li>
+            <li><b>02</b>유튜브 '병조쌤' 5만 크리에이터</li>
+            <li><b>03</b>국제 공인 NLP practitioner</li>
+            <li><b>04</b>&lt;나답게 말하는 기술&gt; 외 저서 4권</li>
+            <li><b>05</b>17년간 1만 명 코칭</li>
+          </ol>
+          <div class="why">
+            <p>수강생들은 처음에 오기 망설였다고 합니다.<br><q>"가면 혼날 것 같아서."</q><br>그런데도 17년 동안 사람이 끊이지 않았습니다.</p>
+            <strong>진짜로 바뀌니까.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5b. 다은쌤 -->
+  <section class="s dk2">
+    <div class="w">
+      <div class="coach2">
+        <div class="rv">
+          <p class="coach-label">함께 가르치는 수석코치</p>
+          <h2 class="h2">강다은 수석코치<br><span class="hot">다은쌤</span></h2>
+          <p class="lead">화, 목 수업은 다은쌤이 직접 맡습니다.<br>역할극 심리치료와 연기로 굳은 마음과 표현을 풀어줍니다.</p>
+          <div class="cstats">
+            <div><b>7<i>년</i></b><span>교육 경력</span></div>
+            <div><b>4,000<i>+</i></b><span>누적 수강생</span></div>
+            <div><b>1<i>위</i></b><span>탈잉 연기 자신감 클래스</span></div>
+          </div>
+          <ol class="creds">
+            <li><b>01</b>비제이라이프스쿨 부원장</li>
+            <li><b>02</b>역할극 심리치료사 1급</li>
+            <li><b>03</b>액팅 스피치 전문 드라마테라피스트</li>
+            <li><b>04</b>탈잉 플랫폼 연기 자신감 클래스 1위</li>
+            <li><b>05</b>유튜브 '마음다은' 크리에이터</li>
+          </ol>
+        </div>
+        <div class="coach-pics rv" style="--d:.08s">
+          <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun.webp" alt="강다은 수석코치" loading="lazy"><figcaption>수석코치 다은쌤</figcaption></figure>
+          <figure><img src="https://byoungjokang.github.io/biras-class/assets/home/coach-daeun-class.webp" alt="다은쌤 수업 현장" loading="lazy"><figcaption>수업 현장</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 수업 고르기 -->
+  <section class="s lt" id="bjh-pick">
+    <div class="w">
+      <h2 class="h2 rv">어디서 시작할지<br><span class="hot">고르세요</span></h2>
+      <p class="lead rv">처음이든, 혼자든, 제대로든.<br>시작점만 다를 뿐 가는 곳은 같습니다.</p>
+      <div class="pick">
+        <article class="card rv">
+          <span class="for">혼자, 내 속도로 하고 싶다면</span>
+          <h3>온라인 자신감 인큐베이팅 코스 2.0</h3>
+          <p>표현력과 대화스킬을 VOD 50편 이상으로 배웁니다. 한 번 구매로 평생 수강합니다.</p>
+          <ul><li>200만원 상당 인생 대화 스킬 PDF 교안</li><li>오프라인 미친수업 무료 참가권 2회</li><li>코스 전용 단톡방, 코치진 피드백</li></ul>
+          <a class="btn" href="https://lifeschool.crekit.io/onlinebj" target="_blank" rel="noopener">온라인 코스 보기</a>
+        </article>
+        <article class="card rv" style="--d:.06s">
+          <span class="for">처음이라 망설여진다면</span>
+          <h3>원데이 미친수업</h3>
+          <p>하루 수업으로 비라스를 먼저 경험해보세요. 문제 진단부터 최적화 세션, 캐릭터 리빌딩까지 3시간 동안 몸으로 부딪힙니다.</p>
+          <ul><li>월~목 저녁 7시~10시 중 하루 선택</li><li>월, 수 병조쌤 직강 / 화, 목 다은쌤</li></ul>
+          <a class="btn" href="https://lifeschool.crekit.io/crazyclass" target="_blank" rel="noopener">미친수업 보기</a>
+        </article>
+        <article class="card main rv" style="--d:.12s">
+          <span class="for">제대로 바뀌고 싶다면 (가장 추천)</span>
+          <h3>프리미엄 오프라인 클래스<br>입학 올인원</h3>
+          <p>오프라인 첫 달 4주와 온라인 평생 수강을 함께. 코치진이 직접 코칭하는 극하드캐리 실기수업입니다.</p>
+          <ul><li>코치진 밀착 집중 하드캐리</li><li>VIP 수강생 오픈카톡방</li><li>코치진의 1:1 대면상담</li></ul>
+          <a class="btn" href="#bjh-apply" data-apply>수강안내 PDF 받기</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 오시는 길, 신청 -->
+  <section class="s dk">
+    <div class="w">
+      <div class="loc">
+        <img class="rv" src="https://byoungjokang.github.io/biras-class/assets/home/studio.webp" alt="비라스 스튜디오 수업 현장" loading="lazy">
+        <div class="rv" style="--d:.08s">
+          <h2 class="h2" style="font-size:clamp(28px,3.6vw,42px)">찾아오시는 길</h2>
+          <div class="addr">
+            <small>비라스 스튜디오</small>
+            <p>서울특별시 강남구 역삼동 836-48<br>예원빌딩 B1</p>
+            <span>강남역, 양재역에서 도보 10분</span>
+          </div>
+          <div class="time">
+            <div><small>수업 시간</small><b>월~목 저녁 7시~10시</b></div>
+            <div><small>휴무</small><b>금, 주말</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="apply rv" id="bjh-apply">
+        <h2>여기까지 읽었다면<br>이미 바뀌고 싶은 겁니다</h2>
+        <p>신청서를 남기면 카카오톡으로 수강안내 PDF를 보내드립니다.<br>비용, 코스별 시간표, 등록 방법이 다 들어 있습니다.<br>읽어보고 결정하셔도 늦지 않습니다.</p>
+        <a class="btn" href="#bjh-apply" data-apply>수강안내 PDF 받기</a>
+        <small>신청서는 결제가 아닙니다.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 자주 묻는 질문 (맨 아래, 바로 밑이 아임웹 신청서) -->
+  <section class="s lt">
+    <div class="w faq">
+      <h2 class="h2 rv">자주 묻는<br>질문</h2>
+      <div class="faq-list rv">
+        <details open><summary>비용은 얼마인가요?</summary><p>코스마다 다릅니다. 수강안내 PDF에 비용, 시간표, 등록 방법을 전부 정리해 두었습니다. 아래 신청서를 남기시면 카카오톡으로 보내드립니다.</p></details>
+        <details><summary>처음인데 낯선 사람과 장소에 가기 두렵습니다.</summary><p>누구나 처음은 두렵습니다. 낯선 사람과 상황에 차근차근 적응할 수 있도록 코치진이 함께합니다.</p></details>
+        <details><summary>사람들 앞에서 발표하다가 망신당하지 않을까요?</summary><p>이 수업은 잘하고 못하고를 평가하는 자리가 아닙니다. 불편한 순간을 안전하게 직면하고 넘어설 때 실제 자신감이 만들어집니다.</p></details>
+        <details><summary>배워본 적이 없는데 못하면 어떻게 하죠?</summary><p>못하는 것이 당연합니다. 그래서 수업을 듣는 것입니다. 모든 훈련 과정에 코치진이 함께합니다.</p></details>
+        <details><summary>꼭 첫 달 올인원을 들어야 하나요?</summary><p>가장 추천드립니다. 실기수업과 인간관계 수업이 병행되지 않으면 빠른 변화가 어렵습니다. 부담되실 경우 오프라인 첫 달, 온라인 평생 코스를 따로 신청하실 수도 있습니다.</p></details>
+        <details><summary>매달 모집하는 기간이 따로 있나요?</summary><p>없습니다. 비라스는 개인에게 초점이 맞춰진 수업이기 때문에 언제 입학하셔도 배우는 데 지장이 없습니다.</p></details>
+        <details><summary>저의 약한 모습이 드러날까 무섭습니다.</summary><p>소심하고 약한 모습이 드러날 수 있습니다. 하지만 당신은 두려워하기 위해 사는 것이 아니라 행복하기 위해 살아갑니다. 그 모습까지 안전하게 표현하는 법을 가르쳐드립니다.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="stick" id="bjh-stick">
+    <div class="stick-in">
+      <p><b>사람은 변합니다</b>수강안내 PDF를 카톡으로 받아보세요</p>
+      <a class="btn" href="#bjh-apply" data-apply>수강안내 PDF 받기</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('bjh'); if(!root) return;
+  root.classList.add('js');
+  /* 등장 */
+  var els=root.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    for(var i=0;i<els.length;i++) io.observe(els[i]);
+  } else { for(var j=0;j<els.length;j++) els[j].classList.add('in'); }
+  /* 고통 체크 */
+  var list=document.getElementById('bjh-pains'), cnt=document.getElementById('bjh-cnt');
+  list.addEventListener('click',function(ev){
+    var b=ev.target.closest('.pain'); if(!b) return;
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true');
+    cnt.textContent=list.querySelectorAll('.pain[aria-pressed="true"]').length;
+  });
+  /* 신청 버튼: 이 블록 아래 아임웹 수강신청 폼으로 이동 (없으면 이 블록의 신청 박스로) */
+  function findForm(){
+    var f=document.getElementById('apply')||document.getElementById('form');
+    if(f) return f;
+    var forms=document.querySelectorAll('form');
+    for(var k=0;k<forms.length;k++){ if(!root.contains(forms[k]) && (root.compareDocumentPosition(forms[k]) & Node.DOCUMENT_POSITION_FOLLOWING)) return forms[k]; }
+    return null;
+  }
+  root.addEventListener('click',function(ev){
+    var a=ev.target.closest('[data-apply]'); if(!a) return;
+    var f=findForm(); if(!f) return;
+    ev.preventDefault();
+    var y=f.getBoundingClientRect().top+window.pageYOffset-80;
+    window.scrollTo({top:y,behavior:'smooth'});
+  });
+  /* 하단 고정 바: 첫 화면을 지나면 보이고, 신청서가 보이면 숨김 */
+  var stick=document.getElementById('bjh-stick'), hero=root.querySelector('.hero'), applyBox=document.getElementById('bjh-apply');
+  if('IntersectionObserver' in window){
+    var heroIn=true, formIn=false;
+    function upd(){ stick.classList.toggle('on', !heroIn && !formIn); }
+    new IntersectionObserver(function(es){heroIn=es[0].isIntersecting;upd();},{threshold:.05}).observe(hero);
+    var watch=findForm()||applyBox;
+    new IntersectionObserver(function(es){formIn=es[0].isIntersecting;upd();},{threshold:.05}).observe(watch);
+  } else { stick.classList.add('on'); }
+})();
+</script>
+
+<!-- 아래는 미리보기용 자리표시. 실제 아임웹에서는 기존 '수강 신청' 폼 섹션이 이 자리에 온다. -->
+<section class="imweb-mock" id="apply"><b>[아임웹 기존 수강신청 폼 자리]</b><p>실제 홈에서는 지금 쓰고 있는 아임웹 수강신청 폼이 여기 그대로 들어갑니다. 작성하면 카톡으로 수강안내 PDF가 가는 기존 흐름도 그대로입니다.</p>
+<form onsubmit="return false"><input placeholder="이름"><input placeholder="연락처"></form></section>
+</body></html>
